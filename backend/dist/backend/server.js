@@ -1,0 +1,23 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const ErrorMiddleware_1 = __importDefault(require("./middlewares/ErrorMiddleware"));
+const blogRoutes_1 = __importDefault(require("./routes/blogRoutes"));
+const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
+const commentRoutes_1 = __importDefault(require("./routes/commentRoutes"));
+const db_1 = __importDefault(require("./config/db"));
+dotenv_1.default.config();
+(0, db_1.default)();
+const app = (0, express_1.default)();
+const port = process.env.PORT;
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: false }));
+app.use('/api/blogs', blogRoutes_1.default);
+app.use('/api/users', userRoutes_1.default);
+app.use('/api/comments', commentRoutes_1.default);
+app.use(ErrorMiddleware_1.default);
+app.listen(port, () => console.log(`Listening at port: ${port}`));
