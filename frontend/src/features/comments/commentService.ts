@@ -9,7 +9,6 @@ const getComments = async (id: number) => {
 }
 
 const postComment = async (body: any) => {
-    console.log(body)
     const response = await axios.post(`${API_URL}/${body._id}`, body.data)
 
     return response.data

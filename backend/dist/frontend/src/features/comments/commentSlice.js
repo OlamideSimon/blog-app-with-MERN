@@ -54,7 +54,6 @@ exports.commentSlice = (0, toolkit_1.createSlice)({
             .addCase(exports.postComment.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
-            state.comments.push(action.payload);
         })
             .addCase(exports.postComment.rejected, (state, action) => {
             state.isLoading = false;

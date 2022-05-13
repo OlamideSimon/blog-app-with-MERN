@@ -42,7 +42,6 @@ export const commentSlice = createSlice({
             .addCase(postComment.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                state.comments.push(action.payload)
             })
             .addCase(postComment.rejected, (state, action) => {
                 state.isLoading = false

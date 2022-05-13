@@ -46,6 +46,7 @@ const Blog = () => {
         },
       };
       dispatch(postComment(sendData));
+      toast.info('Your comment has been sent for review')
       setFormData({ name: "", email: "", comment: "" });
     }
   };
